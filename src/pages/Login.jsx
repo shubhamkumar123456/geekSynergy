@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import Style from './login.module.css'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Login = () => {
   let emailRef = useRef();
@@ -21,7 +21,7 @@ const Login = () => {
       for(let i=0; i<arr.length; i++){
         if(arr[i].email===emailRef.current.value){
           if(arr[i].passwrd===passwordRef.current.value){
-            navigate('/')
+            navigate('/home')
             return;
           }
         }
@@ -43,6 +43,7 @@ const Login = () => {
           <label className={Style.label} htmlFor="">Password</label>
           <input className={Style.input} type="password" ref={passwordRef}/>
           <button type='submit' className={`${Style.button} btn btn-success`}>Login</button>
+          <p>Do not have an account? <Link to="/">Sign up</Link></p>
         </form>
     </div>
   )

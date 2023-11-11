@@ -1,7 +1,9 @@
 import React, { useRef, useState } from 'react'
 import Style from './signup.module.css'
+import { Link, useNavigate } from 'react-router-dom';
 
 const Signup = () => {
+    const navigate = useNavigate()
     let nameRef= useRef();
     let emailRef= useRef();
     let passwordRef= useRef();
@@ -37,6 +39,7 @@ const Signup = () => {
     
         console.log(arr)
         localStorage.setItem('signup',JSON.stringify(arr))
+        navigate('/login')
     }
   return (
     <div className={Style.signup}>
@@ -59,6 +62,7 @@ const Signup = () => {
             <option value="backend">Backend Developer</option>
         </select>
         <button className={Style.button} type='submit'>Submit</button>
+        <p>Already have an account? <Link to="/login">Login</Link></p>
       </form>
       </div>
   )
